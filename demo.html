@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicolor Neumorphic Analog Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #e0e5ec;
+            font-family: Arial, sans-serif;
+        }
+
+        .clock {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #e0e5ec;
+            box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hand {
+            position: absolute;
+            transform-origin: bottom;
+            border-radius: 5px;
+        }
+
+        .hour {
+            width: 6px;
+            height: 50px;
+            top: 50px;
+            left: 97px;
+            background: #ff6b6b;
+            /* Red */
+        }
+
+        .minute {
+            width: 4px;
+            height: 70px;
+            top: 30px;
+            left: 98px;
+            background: #4dabf7;
+            /* Blue */
+        }
+
+        .second {
+            width: 2px;
+            height: 80px;
+            top: 20px;
+            left: 99px;
+            background: #38d9a9;
+            /* Green */
+        }
+
+        .center {
+            width: 12px;
+            height: 12px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 94px;
+            left: 94px;
+        }
+
+        .numbers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .numbers div {
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Multicolor Numbers */
+        .numbers div:nth-child(1) {
+            color: #ff4757;
+        }
+
+        /* 12 - Red */
+        .numbers div:nth-child(2) {
+            color: #ffa502;
+        }
+
+        /* 1 - Orange */
+        .numbers div:nth-child(3) {
+            color: #fffa65;
+        }
+
+        /* 2 - Yellow */
+        .numbers div:nth-child(4) {
+            color: #2ed573;
+        }
+
+        /* 3 - Green */
+        .numbers div:nth-child(5) {
+            color: #1e90ff;
+        }
+
+        /* 4 - Blue */
+        .numbers div:nth-child(6) {
+            color: #3742fa;
+        }
+
+        /* 5 - Indigo */
+        .numbers div:nth-child(7) {
+            color: #a29bfe;
+        }
+
+        /* 6 - Violet */
+        .numbers div:nth-child(8) {
+            color: #ff4757;
+        }
+
+        /* 7 - Red */
+        .numbers div:nth-child(9) {
+            color: #ffa502;
+        }
+
+        /* 8 - Orange */
+        .numbers div:nth-child(10) {
+            color: #fffa65;
+        }
+
+        /* 9 - Yellow */
+        .numbers div:nth-child(11) {
+            color: #2ed573;
+        }
+
+        /* 10 - Green */
+        .numbers div:nth-child(12) {
+            color: #1e90ff;
+        }
+
+        /* 11 - Blue */
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hand hour" id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second"></div>
+        <div class="center"></div>
+        <div class="numbers">
+            <div style="top: 10%; left: 50%;">12</div>
+            <div style="top: 20%; left: 75%;">1</div>
+            <div style="top: 35%; left: 88%;">2</div>
+            <div style="top: 50%; left: 90%;">3</div>
+            <div style="top: 65%; left: 88%;">4</div>
+            <div style="top: 80%; left: 75%;">5</div>
+            <div style="top: 90%; left: 50%;">6</div>
+            <div style="top: 80%; left: 25%;">7</div>
+            <div style="top: 65%; left: 12%;">8</div>
+            <div style="top: 50%; left: 10%;">9</div>
+            <div style="top: 35%; left: 12%;">10</div>
+            <div style="top: 20%; left: 25%;">11</div>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            const hourDeg = (hours + minutes / 60) * 30;
+            const minuteDeg = (minutes + seconds / 60) * 6;
+            const secondDeg = seconds * 6;
+
+            document.getElementById("hour").style.transform = `rotate(${hourDeg}deg)`;
+            document.getElementById("minute").style.transform = `rotate(${minuteDeg}deg)`;
+            document.getElementById("second").style.transform = `rotate(${secondDeg}deg)`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+
+</html>
